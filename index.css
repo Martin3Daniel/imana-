@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+@theme {
+  --breakpoint-xs: 26rem; /* 416px — small phone breakpoint */
+
+  /* Manna brand palette — primary yellow #F5C124, accent green #0A6629 */
+  --color-cream: #fffdf6;
+  --color-paper: #faf5e6;
+
+  /* "blush" tokens -> brand yellow family */
+  --color-blush: #fdeebc;
+  --color-blush-deep: #f5c124;
+  --color-blush-ink: #a87e08;
+
+  /* "mint" tokens -> brand green family */
+  --color-mint: #ddeee2;
+  --color-mint-deep: #0a6629;
+  --color-mint-ink: #0a6629;
+
+  /* "wood" tokens -> deep green neutrals for text/headings */
+  --color-wood: #4d6353;
+  --color-wood-dark: #0a3d1c;
+  --color-ink: #12291a;
+  --color-line: #ece4cf;
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Karla", "Helvetica Neue", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Offset anchored sections below the sticky two-tier header */
+section[id] {
+  scroll-margin-top: 5rem;
+}
+@media (min-width: 64rem) {
+  section[id] {
+    scroll-margin-top: 8rem;
+  }
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-cream);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+/* Lightweight entrance animations (replaces framer-motion) */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.animate-rise {
+  animation: rise 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.animate-pop {
+  animation: pop 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-rise,
+  .animate-pop {
+    animation: none;
+  }
+}

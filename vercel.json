@@ -1,0 +1,20 @@
+{
+  "buildCommand": "node build.mjs || (echo 'remote build failed, using committed dist' && test -d dist)",
+  "outputDirectory": "dist",
+  "crons": [
+    {
+      "path": "/api/keepalive",
+      "schedule": "0 7 * * *"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "/api/:path*"
+    },
+    {
+      "source": "/((?!assets|images|uploads|favicon).*)",
+      "destination": "/index.html"
+    }
+  ]
+}
